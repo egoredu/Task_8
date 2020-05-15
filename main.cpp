@@ -3,22 +3,28 @@
 #include <sstream>
 #include <map>
 #include <vector>
+#include <fstream>
 using namespace std;
 
 int main() {
-    // вводится число пар, а потом сами пары синонимов, пара (два слова, разд пробелом) в каждой строке
-    int n; // количество пар
-    cin >> n;
     map<string, string> dict;
     vector<int> vectorPair;
-    string key, value;
+    string key, value, filename_in;
+    // вводится число пар, а потом сами пары синонимов, пара (два слова, разд пробелом) в каждой строке
+    ifstream fin;
+    cout << "Введите путь к входному файлу:\n";
+    cin >> filename_in;
+    fin.open(filename_in);
+
+    int n; // количество пар
+    fin >> n;
     for (int i = 0; i < n; ++i) {
-        cin >> key;
-        cin >> value;
+        fin >> key;
+        fin >> value;
         dict.insert(make_pair(key, value)); // создаем пары синонимов
         dict.insert(make_pair(value, key));
     }
-    cin >> key; // запрос – последнее слово, к которому ищем синоним
+    fin >> key; // запрос – последнее слово, к которому ищем синоним
     cout << dict.find(key)->second;
     return 0;
 }
