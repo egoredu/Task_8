@@ -12,7 +12,7 @@ int main() {
     string key, value, filename_in;
     // вводится число пар, а потом сами пары синонимов, пара (два слова, разд пробелом) в каждой строке
     ifstream fin;
-    cout << "Введите путь к входному файлу:\n";
+    cout << "Enter the input file path:\n";
     cin >> filename_in;
     fin.open(filename_in);
 
